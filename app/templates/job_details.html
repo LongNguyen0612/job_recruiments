@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block title %} Job Detail {% endblock %}
+{% block dropdown %}
+<li><a href="/logout">Đăng xuất</a></li>
+{% endblock %}
+{% block detail_job %}
+
+    <!-- ***** Call to Action Start ***** -->
+    <section class="section section-bg" id="call-to-action" style="background-image: url(../static/images/job-image-1-1200x600.jpg)">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <div class="cta-content">
+                        <br>
+                        <br>
+                        <h2>{{job.salary}} <em>$</em></h2>
+                        <p>{{job.title}}</p>
+
+                        <!-- *****<div class="main-button">
+                          <a href="#">Ứng tuyển công việc này</a>
+                        </div>***** -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Call to Action End ***** -->
+
+    <!-- ***** Fleet Starts ***** -->
+    <section class="section" id="trainers">
+        <div class="container">
+            <br>
+            <br>
+            
+            <br>
+            <br>
+
+            <div class="row" id="tabs">
+              <div class="col-lg-4">
+                <ul>
+                  <li><a href='#tabs-1'><i class="fa fa-cog"></i> Mô tả Công Việc</a></li>
+                  <li><a href='#tabs-2'><i class="fa fa-info-circle"></i> Nhà tuyển dụng</a></li>
+                  <li><a href='#tabs-3'><i class="fa fa-phone"></i> Chi tiết liên lạc</a></li>
+                </ul>
+              </div>
+              <div class="col-lg-8">
+                <section class='tabs-content' style="width: 100%;">
+                  <article id='tabs-1'>
+                    <h4>Mô tả công việc</h4>
+                    <p>{{job.description}}</p>
+                  </article>
+
+                  <article id='tabs-2'>
+                    <h4>Nhà tuyển dụng</h4>
+
+                    <p class="lead"> <i class="fa fa-map-marker">{{job.address}}</i></p>
+                   </article>
+
+                  <article id='tabs-3'>
+                    <h4>Thông tin liên lạc</h4>
+
+                    <div class="row">   
+                        <div class="col-sm-6">
+                            <label>Tên</label>
+
+                            <p>{{recruiter.name}}</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <label>Công Ty</label>
+
+                            <p>{{job.company}}</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <label>Phone</label>
+
+                            <p>{{recruiter.phone_number}}</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <label>Email</label>
+                            <p><a href="#">{{recruiter.email}}</a></p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p></p>
+                        </div>
+                    </div>
+                  </article>
+                </section>
+              </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Fleet Ends ***** -->
+{% endblock %}

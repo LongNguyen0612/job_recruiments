@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block title %} Contact {% endblock %}
+
+{% block dropdown %}
+{% if not login %}
+    <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Xem Thêm</a>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="/login">Đăng nhập</a>
+            <a class="dropdown-item" href="/register">Đăng ký</a>
+        </div>
+    </li>
+{% else %}
+    <li><a href="/logout">Đăng xuất</a></li>
+{% endif %}
+{% endblock %}
+
+{% block contact %}
+<section class="section section-bg" id="call-to-action" style="background-image: url(../static/images/banner-image-1-1920x500.jpg)">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <div class="cta-content">
+                    <br>
+                    <br>
+                    <h2>Contact <em>me</em></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ***** Features Item Start ***** -->
+<section class="section" id="features">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="section-heading">
+                    <h2>contact <em> info</em></h2>
+                    <img src="../static/images/line-dec.png" alt="waves">
+                    
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="icon">
+                    <i class="fa fa-github"></i>
+                </div>
+
+                <h5><a href="https://github.com/Longnguyen0612">Github</a></h5>
+
+                <br>
+            </div>
+
+            <div class="col-md-4">
+                <div class="icon">
+                    <i class="fa fa-instagram"></i>
+                </div>
+
+                <h5><a href="https://www.instagram.com/Longnguyen0612">Instagram</a></h5>
+
+                <br>
+            </div>
+
+            <div class="col-md-4">
+                <div class="icon">
+                    <i class="fa fa-youtube"></i>
+                </div>
+
+                <h5><a href="https://www.youtube.com/channel/UC2HUeHtFziNE0Yvl4t8X_UA">Youtube channel</a></h5>
+
+                <br>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ***** Features Item End ***** -->
+{% endblock %}

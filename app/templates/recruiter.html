@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block title %} Employer{% endblock %}
+{% block dropdown %}
+<li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Xem Thêm</a>
+    <div class="dropdown-menu">
+        <a class="dropdown-item" href="/login">Đăng nhập</a>
+        <a class="dropdown-item" href="/register">Đăng ký</a>
+    </div>
+</li>
+{% endblock %}
+{% block recruiter %}
+<section class="section section-bg" id="call-to-action" style="background-image: url(../static/images/about-image-2-940x460.jpg)">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <div class="cta-content">
+                    <br>
+                    <br>
+                    <h2>Nhà <em>Tuyển Dụng</em></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid" style="background-image: url(../static/images/job-image-1-1200x600.jpg)">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="contact-form section-bg">
+                    <form id="recruiter" action="/recruiter" method="POST" style="padding:20px 0px;">
+                      <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-12"> 
+
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12" style="margin-left: 10;"> 
+                          <div class="login-form">
+                            <fieldset>
+                              <input name="name" type="text" id="name" placeholder="Tên nhà tuyển dụng" required="">
+                            </fieldset>
+                            <fieldset>
+                                <input name="email" type="text" id="email" pattern="[^ @]*@[^ @]*" placeholder="Email*" required="">
+                              </fieldset>
+                            <fieldset>
+                                <input name="phone_number" type="text" id="phone_number" placeholder="Sô điện thoại" required="">
+                              </fieldset>
+                        <fieldset>
+                          <input name="company" type="company" id="company" placeholder="Tên Công Ty" required="">
+                        </fieldset>
+                        <fieldset>
+                            <input name="address" type="text" id="address" placeholder="Địa chỉ" required="">
+                          <fieldset>
+                            <textarea rows="4" cols="50" name="description" type="text" id="description" placeholder="Mô tả về công ty" required="">
+                            </textarea>
+                          </fieldset>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12"> 
+
+                        </div>
+                        <div class="col-lg-12">
+                          <fieldset>
+                            <button type="submit" id="form-submit" class="main-button">Xác nhận</button>
+                          </fieldset>
+                        </div>
+                      </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+    
+   

@@ -1,0 +1,37 @@
+
+{% extends "base.html" %}
+{% block title %} Home {% endblock %}
+
+{% block dropdown %}
+{% if not login %}
+    <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Xem Thêm</a>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="/login">Đăng nhập</a>
+            <a class="dropdown-item" href="/register">Đăng ký</a>
+        </div>
+    </li>
+{% else %}
+    <li><a href="/logout">Đăng xuất</a></li>
+{% endif %}
+{% endblock %}
+
+{% block home %}
+<!-- ***** Main Banner Area Start ***** -->
+<div class="main-banner" id="top">
+    <video autoplay muted loop id="bg-video">
+        <source src="../static/images/video.mp4" type="video/mp4" />
+    </video>
+
+    <div class="video-overlay header-text">
+        <div class="caption">
+            <h6>Welcome</h6>
+            <h2>Find the perfect <em>Job</em></h2>
+            <div class="main-button">
+                <a href="/all-job">View all job here</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ***** Main Banner Area End ***** -->
+{% endblock %}

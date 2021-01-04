@@ -1,0 +1,29 @@
+*{
+    font-size:14px;
+}
+#box-wrapped {
+    padding:10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#box-wrapped .box-title {
+    margin:10px 0px;
+}
+#box-wrapped .box-span{
+    font-size:11px;
+    margin:5px 0px;
+}
+#box-wrapped .box-paragraph {
+    font-size:14px;
+    margin:5px 0px;
+}
+.box-category span{
+    display:inline-block;
+    padding:5px 10px;
+    border:1px solid black;
+}
+.box-status span{
+    padding:50px 10px;
+    border:1px solid black;
+    background:black;
+    color:white;
+}

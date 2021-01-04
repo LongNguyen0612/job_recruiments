@@ -1,0 +1,224 @@
+<html>
+  <head>
+    <html>
+  <head>
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Admin Form</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+		<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+		<script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>  
+		<link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
+	<script type="text/javascript" language="javascript">
+		$(document).ready(function(){
+			var dataTable = $('#sample_data').DataTable();
+			$('#sample_data').editable({
+				container:'body',
+				selector:'td.image',
+				url:'/updatejobs',
+				title:'image',
+				type:'POST',
+				validate:function(value){
+					if($.trim(value) == '')
+					{
+						return 'This field is required';
+					}
+				}
+			});
+			var dataTable = $('#sample_data').DataTable();
+			$('#sample_data').editable({
+				container:'body',
+				selector:'td.title',
+				url:'/updatejobs',
+				title:'title',
+				type:'POST',
+				validate:function(value){
+					if($.trim(value) == '')
+					{
+						return 'This field is required';
+					}
+				}
+			});
+			var dataTable = $('#sample_data').DataTable();
+			$('#sample_data').editable({
+				container:'body',
+				selector:'td.company',
+				url:'/updatejobs',
+				title:'company',
+				type:'POST',
+				validate:function(value){
+					if($.trim(value) == '')
+					{
+						return 'This field is required';
+					}
+				}
+			});
+			var dataTable = $('#sample_data').DataTable();
+			$('#sample_data').editable({
+				container:'body',
+				selector:'td.address',
+				url:'/updatejobs',
+				title:'address',
+				type:'POST',
+				validate:function(value){
+					if($.trim(value) == '')
+					{
+						return 'This field is required';
+					}
+				}
+			});
+			var dataTable = $('#sample_data').DataTable();
+			$('#sample_data').editable({
+				container:'body',
+				selector:'td.description',
+				url:'/updatejobs',
+				title:'description',
+				type:'POST',
+				validate:function(value){
+					if($.trim(value) == '')
+					{
+						return 'This field is required';
+					}
+				}
+			});
+			var dataTable = $('#sample_data').DataTable();
+			$('#sample_data').editable({
+				container:'body',
+				selector:'td.tag_list',
+				url:'/updatejobs',
+				title:'tag_list',
+				type:'POST',
+				validate:function(value){
+					if($.trim(value) == '')
+					{
+						return 'This field is required';
+					}
+				}
+			});
+			var dataTable = $('#sample_data').DataTable();
+			$('#sample_data').editable({
+				container:'body',
+				selector:'td.salary',
+				url:'/updatejobs',
+				title:'salary',
+				type:'POST',
+				validate:function(value){
+					if($.trim(value) == '')
+					{
+						return 'This field is required';
+					}
+				}
+			});
+		});	
+function del(ID, title){
+	if (confirm("Are you sure you want to delete '" + title + "'")){
+		window.location.href = '/delete/' + ID;
+	}
+}
+</script>
+	</head>
+	<body>
+		<div class="container">
+			<h3 align ="center">Admin</h3>
+			<br />
+			<div class="panel panel-default">
+				<div class="panel-heading">
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+				  Add New Jobs
+				</button>
+				<a href="/all-job">Home</a>
+				</div>
+				<div class="panel-body">
+					<div class="table-responsive">
+						<table id="sample_data" class="table table-bordered table-striped">
+							<thead>
+								<tr>
+								<th>Image</th>
+								<th>Title</th>
+								<th>Company</th>
+                				<th>Address</th>
+                				<th>Description</th>
+                				<th>Tag</th>
+                				<th>Salary</th>
+                				<th>Delete</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for row in jobs %}
+								<tr>
+									<td data-name="image" class="image" data-type="text" data-pk="{{row.id}}">{{row.image}}</td>
+									<td data-name="title" class="title" data-type="text" data-pk="{{row.id}}">{{row.title}}</td>
+                  					<td data-name="company" class="company" data-type="text" data-pk="{{row.id}}">{{row.company}}</td>
+                  					<td data-name="address" class="address" data-type="text" data-pk="{{row.id}}">{{row.address}}</td>
+                  					<td data-name="description" class="description" data-type="text" data-pk="{{row.id}}">{{row.description}}</td>
+                  					<td data-name="tag_list" class="tag_list" data-type="text" data-pk="{{row.id}}">{{row.tag_list}}</td>
+                  					<td data-name="salary" class="salary" data-type="text" data-pk="{{row.id}}">{{row.salary}}</td>
+									<td><a href="javascript:del('{{row.id}}','{{row.title}}')" class="btn btn-primary">Delete</a></td>
+								</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add New Jobs</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form role="form" method="post" action="/add">
+          <div class="form-group">
+            <label class="col-form-label">Image:</label>
+            <input type="text" class="form-control" id="txtimage" name="txtimage">
+          </div>
+		  <div class="form-group">
+            <label class="col-form-label">Title:</label>
+            <input type="text" class="form-control" id="txttitle" name="txttitle">
+          </div>
+		  <div class="form-group">
+            <label class="col-form-label">Company:</label>
+            <input type="text" class="form-control" id="txtcompany" name="txtcompany">
+          </div>
+          <div class="form-group">
+            <label class="col-form-label">Address:</label>
+            <input type="text" class="form-control" id="txtaddress" name="txtaddress">
+          </div>
+          <div class="form-group">
+            <label class="col-form-label">Description:</label>
+            <input type="text" class="form-control" id="txtdescription" name="txtdescription">
+          </div>
+          <div class="form-group">
+            <label class="col-form-label">Experience:</label>
+            <input type="text" class="form-control" id="txtexperience" name="txtexperience">
+          </div>
+          <div class="form-group">
+            <label class="col-form-label">Tag:</label>
+            <input type="text" class="form-control" id="txttag_list" name="txttag_list">
+          </div>
+          <div class="form-group">
+            <label class="col-form-label">Salary:</label>
+            <input type="text" class="form-control" id="txtsalary" name="txtsalary">
+          </div>
+		<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		<input name="cmdsubmit" class="btn btn-primary" type="submit" value="Submit" />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+		</div>
+		<br />
+		<br />
+	</body>
+</html>

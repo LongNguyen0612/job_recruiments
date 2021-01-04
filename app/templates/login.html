@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %} Login {% endblock %}
+{% block dropdown %}
+<li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Xem Thêm</a>
+    <div class="dropdown-menu">
+        <a class="dropdown-item" href="/login">Đăng nhập</a>
+        <a class="dropdown-item" href="/register">Đăng ký</a>
+    </div>
+</li>
+{% endblock %}
+{% block login %}
+<link rel="stylesheet" href="../static/css/loginForm.css">
+<section class="section section-bg" id="call-to-action" style="background-image: url(../static/images/about-fullscreen-1-1920x700.jpg)">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <div class="cta-content">
+                    <br>
+                    <br>
+                    <h2>Đăng <em>Nhập</em></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid" style="background-image: url(../static/images/banner-image-1-1920x500.jpg)">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="contact-form section-bg">
+                    <form id="login" action="/login" method="POST">
+                      <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-12"> 
+
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12" style="margin-left: 10;"> 
+                          <div class="login-form">
+                            <fieldset>
+                              <input name="username" type="text" id="username" placeholder="Tên đăng nhập" required="">
+                            </fieldset>
+                        <fieldset>
+                          <input name="password" type="password" id="password" placeholder="Mật khẩu*" required="">
+                        </fieldset>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12"> 
+
+                        </div>
+                        <div class="col-lg-12">
+                          <fieldset>
+                            <button type="submit" id="form-submit" class="main-button">Đăng nhập</button>
+                          </fieldset>
+                        </div>
+                      </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+   
+    {% endblock %}
+    
+   
