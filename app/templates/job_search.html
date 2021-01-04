@@ -40,9 +40,8 @@
                                     <span> {{job.salary}}<sup>$</sup> </span>
 
                                     <h4>{{job.title}}</h4>
-                                    {% for row in job.tag_list %}
-                                    <p>{{row}}</p>
-                                    {% endfor %}
+                                    <p>{{job.tag_list}}</p>
+
                                     <ul class="social-icons">
                                         <li><a href="/job-details/{{job.id}}">+ Xem thêm</a></li>
                                     </ul>
