@@ -71,10 +71,16 @@ def job_detail(job_id=None):
     recruiter = Recruiter.objects().first()
     return render_template("job_details.html", job=job, recruiter=recruiter)
 
-@bp.route("/user-admin")
+@bp.route("/user-admin", methods=["GET"])
 def query_records():
-    jobs = Jobs.objects()
-    return render_template('useradmin.html',jobs=jobs)
+    if "username" not in session:
+        return redirect(url_for("home.home"))
+    elif session["user_type"] == "employee":
+        return redirect(url_for("home.home"))
+    else:
+        jobs = Jobs.objects()
+        return render_template("useradmin.html",jobs=jobs)
+
 
 @bp.route("/add", methods=["GET", "POST"])
 def create_record():

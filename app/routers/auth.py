@@ -64,6 +64,8 @@ def login():
             if session["user_type"] == "recruiter":
                 session["username"] = user_in["username"]
                 return redirect(url_for("jobs.query_records"))
+        else:
+            return redirect(url_for("home.home"))
 
         password = user_in["password"].encode("utf-8")
         password_in_db = login_user["password"].encode("utf-8")
@@ -73,6 +75,7 @@ def login():
                 session["username"] = user_in["username"]
             flash("Incorrect username or password")
             return redirect(url_for("home.home"))
+
 
 
 @bp.route("/logout")
