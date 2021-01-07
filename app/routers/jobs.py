@@ -68,7 +68,12 @@ def search_with_tag():
 
 @bp.route("/job-details/<job_id>", methods=["GET", "POST"])
 def job_detail(job_id=None):
-    job = Jobs.objects(id=job_id).first()
-    recruiter = Recruiter.objects().first()
-    return render_template("job_details.html", job=job, recruiter=recruiter)
+    if session["user_type"] == "recruiter":
+        job = Jobs.objects(id=job_id).first()
+        recruiter = Recruiter.objects().first()
+        return render_template("jobs_detail_admin.html", job=job, recruiter=recruiter)
+    else:
+        job = Jobs.objects(id=job_id).first()
+        recruiter = Recruiter.objects().first()
+        return render_template("job_details.html", job=job, recruiter=recruiter)
 
