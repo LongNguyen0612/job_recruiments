@@ -1,6 +1,6 @@
 from flask import Flask
 from app.db.database import initialize_db
-from app.routers import home, auth, jobs, contact
+from app.routers import home, auth, jobs, contact,admin
 
 def create_app():
     app = Flask(__name__)
@@ -12,5 +12,6 @@ def create_app():
     app.register_blueprint(auth.bp)
     app.register_blueprint(jobs.bp)
     app.register_blueprint(contact.bp)
+    app.register_blueprint(admin.bp)
 
     return app

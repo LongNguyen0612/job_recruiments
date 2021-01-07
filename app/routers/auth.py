@@ -60,6 +60,15 @@ def login():
         login_user = User.objects(username=user_in["username"]).first()
         session["user_type"] = login_user["user_type"]
 
+        password = user_in["password"].encode("utf-8")
+        password_in_db = login_user["password"].encode("utf-8")
+
+        if login_user :
+            if bcrypt.checkpw(password, password_in_db):
+                session["username"] = user_in["username"]
+        flash("Incorrect username or password")
+        return redirect(url_for("home.home"))
+
         if login_user :
             if session["user_type"] == "recruiter":
                 session["username"] = user_in["username"]
@@ -67,14 +76,7 @@ def login():
         else:
             return redirect(url_for("home.home"))
 
-        password = user_in["password"].encode("utf-8")
-        password_in_db = login_user["password"].encode("utf-8")
-
-        if login_user :
-            if bcrypt.checkpw(password, password_in_db):
-                session["username"] = user_in["username"]
-            flash("Incorrect username or password")
-            return redirect(url_for("home.home"))
+        
 
 
 

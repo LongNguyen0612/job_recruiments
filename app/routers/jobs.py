@@ -2,6 +2,7 @@ from flask import Blueprint, session, render_template, redirect, url_for, reques
 from app.models.job import Jobs
 from app.models.recruiter import Recruiter
 from app.routers.auth import register
+from app.models.apply import Apply
 from slugify import slugify
 import json
 
@@ -70,79 +71,4 @@ def job_detail(job_id=None):
     job = Jobs.objects(id=job_id).first()
     recruiter = Recruiter.objects().first()
     return render_template("job_details.html", job=job, recruiter=recruiter)
-
-@bp.route("/user-admin", methods=["GET"])
-def query_records():
-    if "username" not in session:
-        return redirect(url_for("home.home"))
-    elif session["user_type"] == "employee":
-        return redirect(url_for("home.home"))
-    else:
-        jobs = Jobs.objects()
-        return render_template("useradmin.html",jobs=jobs)
-
-
-@bp.route("/add", methods=["GET", "POST"])
-def create_record():
-    if session["user_type"] == "recruiter":
-        txtimage = request.form['txtimage']
-        txttitle = request.form['txttitle']
-        txtcompany = request.form['txtcompany']
-        txtaddress = request.form['txtaddress']
-        txtdescription = request.form['txtdescription']
-        txtexperience = request.form['txtexperience']
-        txttag_list = request.form['txttag_list'].split(",")
-        txtsalary = request.form['txtsalary']
-        jobs_save = Jobs(
-            image=txtimage,
-            title=txttitle,
-            company=txtcompany,
-            address=txtaddress,
-            description=txtdescription,
-            experience=txtexperience,
-            salary=txtsalary,
-            tag_list=txttag_list
-            )
-        jobs_save.save()
-        return redirect("/user-admin")
-
-
-@bp.route("/updatejobs", methods=["POST"])
-def updatejobss():
-    if session["user_type"] == "recruiter":
-        pk = request.form['pk']
-        namepost = request.form['name']
-        value = request.form['value']
-        jobs_rs = Jobs.objects(id=pk)
-        if not jobs_rs:
-            return json.dumps({'error':'data not found'})
-        else:
-            if namepost == 'image':
-                jobs_rs.update(image=value)
-            elif namepost == 'title':
-                jobs_rs.update(title=value)
-            elif namepost == 'company':
-                jobs_rs.update(company=value)
-            elif namepost == 'address':
-                jobs_rs.update(address=value)
-            elif namepost == 'description':
-                jobs_rs.update(description=value)
-            elif namepost == 'experience':
-                jobs_rs.update(experience=value)
-            elif namepost == 'tag_list':
-                jobs_rs.update(tag_list=value)
-            elif namepost == 'salary':
-                jobs_rs.update(salary=value)
-        return json.dumps({'status':'OK'})
-
-
-@bp.route('/delete/<string:getid>', methods = ['POST','GET'])
-def delete_job(getid):
-    if session["user_type"] == "recruiter":
-        job = Jobs.objects(id=getid).first()
-        if not job:
-            return jsonify({'error': 'data not found'})
-        else:
-            job.delete()	
-        return redirect('/user-admin')
 
